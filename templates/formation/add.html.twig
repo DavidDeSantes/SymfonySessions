@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Ajout d'une formation
+{% endblock %}
+
+{% block body %}
+
+	<h1>Veuillez ajouter votre nouvelle formation</h1>
+
+	{{ form_start(formFormation) }}
+	<div class="my-custom-class-for-errors">
+		{{ form_errors(formFormation) }}
+	</div>
+	<div class="row">
+		<div class="col">
+			{{ form_row(formFormation.nomFormation) }}
+		</div>
+	</div>
+	{{ form_end(formFormation) }}
+
+{% endblock %}

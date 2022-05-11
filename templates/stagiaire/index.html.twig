@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}liste stagiaires
+{% endblock %}
+
+{% block body %}
+
+	<h2>Voici nos Stagiaires</h2>
+
+<a href="{{ path('add_stagiaire') }}"><button class="button">Ajouter un stagiaire</button></a>
+
+	{% for stagiaire in stagiaires %}
+		<div class="d-grid gap-3">
+			<div class="p-2 bg-light border">
+				<a class="lienCategorie" href="{{ path('show_stagiaire', {'id': stagiaire.id})}}">{{stagiaire}}</a><br>
+				<a class="lienCategorie" href="{{ path('update_stagiaire', {'id' : stagiaire.id}) }}"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a  href="{{ path('delete_stagiaire', {'id' : stagiaire.id}) }}"><i class="fa-solid fa-trash"></i></i></a>
+			</div>
+		</div>
+		<br>
+	{% endfor %}
+{% endblock %}

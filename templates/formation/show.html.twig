@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Détail de la session.
+{% endblock %}
+
+{% block body %}
+
+	<h1>Les sessions de la formation {{formation}}</h1>
+
+	{% for session in formation.sessions %}
+		<div class="d-grid gap-3">
+			<div class="p-2 bg-light border">
+				<a href="{{ path('show_session', {'id': session.id})}}">{{session}}</a><br>
+			</div>
+		</div>
+	{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}liste sessions
+{% endblock %}
+
+{% block body %}
+
+	<h2>Voici nos sessions actuelles</h2>
+
+	{% for session in sessions %}
+		<div class="d-grid gap-3">
+			<div class="p-2 bg-light border">
+				<a href="{{ path('show_session', {'id': session.id})}}">{{session}}</a><br>
+			</div>
+		</div>
+        <br>
+	{% endfor %}
+
+{% endblock %}

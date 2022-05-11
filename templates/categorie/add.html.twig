@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Ajout d'une entreprise
+{% endblock %}
+
+{% block body %}
+
+	<h1>Veuillez ajouter votre nouvelle catégorie</h1>
+
+	{{ form_start(formCategorie) }}
+	<div class="my-custom-class-for-errors">
+		{{ form_errors(formCategorie) }}
+	</div>
+	<div class="row">
+		<div class="col">
+			{{ form_row(formCategorie.nomCategorie) }}
+		</div>
+	</div>
+	{{ form_end(formCategorie) }}
+
+{% endblock %}

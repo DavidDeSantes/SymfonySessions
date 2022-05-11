@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Détail de la session.
+{% endblock %}
+
+{% block body %}
+
+	<h1>Session
+		{{session}}</h1>
+
+	<div class="detailSessionFlex">
+		<div class="detailSession">
+			<h4>Détail de la session :</h4>
+			Place disponible :
+			{{session.place}}
+			<br>
+			Date de début :
+			{{session.dateDebut | date('d/m/Y')}}
+			<br>
+			Date de fin :
+			{{session.datefin | date('d/m/Y')}}
+			<br>
+		</div>
+
+		<div class="detailSession">
+			<h4>Stagiaire(s) inscrit :</h4>
+			{% for stagiaire in session.stagiaires %}
+				<ul>
+					<li>{{stagiaire}}</li>
+				</ul>
+			{% endfor %}
+		</div>
+	</div>
+	<h4>Programme :</h4>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">Catégorie</th>
+				<th scope="col">Module</th>
+				<th scope="col">Temps du Module</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for moduler in session.modulers %}
+				<tr>
+					<td>{{moduler.cours.categorie}}</td>
+					<td>{{moduler.cours}}</td>
+					<td>{{moduler.nbJoursCours}}
+						Jours</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+{% endblock %}

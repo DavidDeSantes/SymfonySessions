@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Ajout d'un cours
+{% endblock %}
+
+{% block body %}
+
+<h1>Veuillez ajouter votre nouvelle cours à la catégorie{{ cours}}</h1>
+
+
+	{{ form_start(formCours) }}
+	<div class="my-custom-class-for-errors">
+		{{ form_errors(formCours) }}
+	</div>
+	<div class="row">
+		<div class="col">
+			{{ form_row(formCours.nomCours) }}
+		</div>
+	</div>
+	{{ form_end(formCours) }}
+
+{% endblock %}

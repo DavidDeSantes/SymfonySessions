@@ -1,0 +1,65 @@
+.wrapper{
+    max-width: 1400px;
+    margin: auto;
+}
+
+
+.navMenu {
+    text-transform: uppercase;
+    background-color: #fb9e61;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+    border-bottom: 3px solid black;
+}
+
+.navMenu a {
+    color: white;
+    text-decoration: none;
+}
+
+h1, h2 {
+text-align: center;
+margin-bottom: 4rem;
+} 
+
+.detailSession {
+    background-color:#ffbd90;
+    padding: 2rem;
+    border: 2px solid black;
+    max-width: fit-content;
+}
+
+.detailStagiaireAlign {
+background-color:#ffbd90;
+padding: 2rem;
+border: 2px solid black;
+text-align: center;
+}
+
+.detailSessionFlex {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+a {
+    color: black;
+}
+
+.button{
+    margin-bottom: 2rem;
+    color: black;
+    background-color: #ffbd90;
+    border-radius: 4px;
+}
+
+.lienCategorie{
+    margin-right: 2rem;
+}
+

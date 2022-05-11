@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Détail de la categorie.
+{% endblock %}
+
+{% block body %}
+
+	<h1>Les cours de la categorie {{categorie}}</h1>
+    
+	<a href="{{ path('add_cours', {'id': categorie.id}) }}"><button class="button">Ajouter un cours</button> </a>
+
+	<h4>Cours actuels :</h4>
+	{% for cours in categorie.cours %}
+		<div class="d-grid gap-3">
+			<div class="p-2 bg-light border">
+				<ul>
+					<li>{{cours}}</li>
+				</ul>
+			</div>
+		</div>
+	{% endfor %}
+
+{% endblock %}
