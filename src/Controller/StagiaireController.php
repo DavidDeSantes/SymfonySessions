@@ -17,7 +17,7 @@ class StagiaireController extends AbstractController
      */
     public function index(ManagerRegistry $doctrine): Response
     {
-        $stagiaires = $doctrine->getRepository(Stagiaire::class)->findAll();
+        $stagiaires = $doctrine->getRepository(Stagiaire::class)->findBy([], ["nom" => "ASC"]);
 
         return $this->render('stagiaire/index.html.twig', [
             'stagiaires' => $stagiaires,

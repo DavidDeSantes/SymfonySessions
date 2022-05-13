@@ -2,39 +2,41 @@
 
 namespace App\Form;
 
+use App\Entity\Moduler;
 use App\Entity\Cours;
-use App\Entity\Categorie;
+use App\Entity\Session;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-class CoursType extends AbstractType
+class ModulerType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nomCours', TextType::class, [
-                'label' => 'Nom Cours',
-
+            ->add('nbJoursCours', NumberType::class)
+            ->add('cours', EntityType::class, [
+                'class' => Cours::class,
+                'choice_label' => 'nomCours'
             ])
-            ->add('categorie', EntityType::class, [
-                'class' => Categorie::class,
-                'choice_label' => 'nomCategorie'
+            ->add('session', EntityType::class, [
+                'class' => Session::class,
+                'choice_label' => 'nomSession'
             ])
             ->add('valider', SubmitType::class, [
                 'attr' => [
                     'class' => 'button'
                 ]
-            ]);
+                ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Cours::class,
+            'data_class' => Moduler::class,
         ]);
     }
 }

@@ -176,9 +176,14 @@ class Session
                 $moduler->setSession(null);
             }
         }
-
         return $this;
     }
+
+    public function placeDispo(){
+        $placeDispo = $this->place - count($this->stagiaires);
+        return $placeDispo;
+    }
+
     public function allOtherInfo()
     {
       return $this->place." ".$this->dateDebut->format("d/m/Y")." ".$this->dateFin->format("d/m/Y");  
