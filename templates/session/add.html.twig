@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Ajout d'une session
+{% endblock %}
+
+{% block body %}
+
+	<h1>Veuillez ajouter votre nouvelle session</h1>
+
+	{{ form_start(formSession) }}
+	<div class="my-custom-class-for-errors">
+		{{ form_errors(formSession) }}
+	</div>
+	<div class="row">
+		<div class="col">
+			{{ form_row(formSession.nomSession) }}
+            {{ form_row(formSession.place) }}
+            {{ form_row(formSession.dateDebut) }}
+            {{ form_row(formSession.dateFin) }}
+		</div>
+	</div>
+	{{ form_end(formSession) }}
+
+{% endblock %}

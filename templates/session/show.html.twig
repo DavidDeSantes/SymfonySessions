@@ -12,8 +12,11 @@
 	<div class="detailSessionFlex">
 		<div class="detailSession">
 			<h4>Détail de la session :</h4>
-			Place disponible :
-			{{session.place}}
+			Places totales :
+			{{ session.place }}
+			<br>
+			Place(s) disponible(s) :
+			{{session.placeDispo}}
 			<br>
 			Date de début :
 			{{session.dateDebut | date('d/m/Y')}}
@@ -27,7 +30,7 @@
 			<h4>Stagiaire(s) inscrit :</h4>
 			{% for stagiaire in session.stagiaires %}
 				<ul>
-					<li>{{stagiaire}}</li>
+					<li>{{stagiaire}} <a href="{{ path('desincrire', {'idStagiaire': stagiaire.id, 'idSession': session.id }) }}">Désincrire</a></li>
 				</ul>
 			{% endfor %}
 		</div>
@@ -52,5 +55,19 @@
 			{% endfor %}
 		</tbody>
 	</table>
+	<br>
+	<br>
 
+	<h4>Liste des stagiaires non-incrit</h4>
+		<div class="detailSession">
+			{% if session.placeDispo == 0 %}
+				<p>Plus de places disponibles !</p>
+			{% else %}
+				{% for stagiaire in stagiaires %}
+					<ul>
+						<li>{{stagiaire}} <a href="{{ path('inscrire', {'idStagiaire': stagiaire.id, 'idSession': session.id }) }}">inscrire à la session</a></li>
+					</ul>
+				{% endfor %}
+			{% endif %}
+		</div>
 {% endblock %}

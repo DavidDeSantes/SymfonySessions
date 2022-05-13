@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Ajout d'un Programme
+{% endblock %}
+
+{% block body %}
+
+	<h1>Veuillez ajouter votre nouveau Programme</h1>
+
+	{{ form_start(formModuler) }}
+	<div class="my-custom-class-for-errors">
+		{{ form_errors(formModuler) }}
+	</div>
+	<div class="row">
+		<div class="col">
+			{{ form_row(formModuler) }}
+		</div>
+	</div>
+	{{ form_end(formModuler) }}
+
+{% endblock %}

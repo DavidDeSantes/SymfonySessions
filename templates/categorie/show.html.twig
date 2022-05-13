@@ -8,14 +8,14 @@
 
 	<h1>Les cours de la categorie {{categorie}}</h1>
     
-	<a href="{{ path('add_cours', {'id': categorie.id}) }}"><button class="button">Ajouter un cours</button> </a>
+	<a href="{{ path('add_cours') }}"><button class="button">Ajouter un cours</button> </a>
 
 	<h4>Cours actuels :</h4>
 	{% for cours in categorie.cours %}
 		<div class="d-grid gap-3">
 			<div class="p-2 bg-light border">
 				<ul>
-					<li>{{cours}}</li>
+					<li>{{cours}}</li><a class="lienCategorie" href="{{ path('update_cours', {'id' : cours.id}) }}"><i class="fa-solid fa-pen-to-square"></i></a> <a  href="{{ path('delete_cours', {'id' : cours.id}) }}"><i class="fa-solid fa-trash"></i></i></a>
 				</ul>
 			</div>
 		</div>

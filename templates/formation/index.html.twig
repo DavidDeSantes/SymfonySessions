@@ -9,14 +9,14 @@
 
 	<h2>Voici nos formations, cliquer sur celle qui vous intéresse pour connaitre les prochaines sessions</h2>
 
-	<a href="{{ path('add_formation') }}"><button class="button">Ajouter une formation</button></a>
+	
 
 	{% for formation in formations %}
 		<div class="d-grid gap-3">
 			<div class="p-2 bg-light border">
 				<a class="lienCategorie" href="{{ path('show_formation', {'id': formation.id}) }}">{{formation}}</a>
 				<a class="lienCategorie" href="{{ path('update_formation', {'id' : formation.id}) }}"><i class="fa-solid fa-pen-to-square"></i></a>
-                <a  href="{{ path('delete_formation', {'id' : formation.id}) }}"><i class="fa-solid fa-trash"></i></i></a>
+                <a  href="{{ path('delete_formation', {'id' : formation.id}) }}"><i class="fa-solid fa-trash"></i></a>
 			</div>
 		</div>
 		<br>

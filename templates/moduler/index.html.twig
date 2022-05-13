@@ -1,20 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ModulerController!{% endblock %}
+{% block title %}
+Programme
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<h4>Programme :</h4>
+<br>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">Catégorie</th>
+				<th scope="col">Module</th>
+				<th scope="col">Temps du Module</th>
+				<th scope="col">Modifier</th>
+				<th scope="col">Supprimer</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for moduler in moduler %}
+				<tr>
+					<td>{{moduler.cours}}</td>
+					<td>{{moduler.session}}</td>
+					<td>{{moduler.nbJoursCours}} Jours</td>
+					<td><a href="{{ path('update_moduler', {'id' : moduler.id}) }}"><i class="fa-solid fa-pen-to-square"></i></a></td>
+					<td><a  href="{{ path('delete_moduler', {'id' : moduler.id}) }}"><i class="fa-solid fa-trash"></i></a></td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+<br>	
+<a href="{{ path('add_moduler') }}"><button class="button">Ajouter d'un programme </button></a>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/laragon/www/Exercices/SymfonySession/src/Controller/ModulerController.php'|file_link(0) }}">src/Controller/ModulerController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/laragon/www/Exercices/SymfonySession/templates/moduler/index.html.twig'|file_link(0) }}">templates/moduler/index.html.twig</a></code></li>
-    </ul>
-</div>
 {% endblock %}

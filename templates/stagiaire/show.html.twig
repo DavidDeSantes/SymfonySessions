@@ -27,5 +27,31 @@
 		{{stagiaire.telephone}}
 		<br>
 	</div>
+    <br>
+	<br>
+	<br>
+	<h4>Session(s) du stagiaire :</h4>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">Formation</th>
+				<th scope="col">Session</th>
+				<th scope="col">Place disponible</th>
+				<th scope="col">Date de début</th>
+				<th scope="col">Date de fin</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for sessions in stagiaire.sessions %}
+				<tr>
+					<td>{{sessions.formation}}</td>
+					<td>{{sessions}}</td>
+					<td>{{sessions.place}}</td>
+					<td>{{sessions.dateDebut | date('d/m/Y')}}</td>
+					<td>{{sessions.dateFin | date('d/m/Y')}}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 
 {% endblock %}
