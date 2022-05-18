@@ -5,18 +5,40 @@
 
 {% block body %}
 
-	<h1>Bienvenue {{ app.user.pseudo}},  chez Elle et An formation !</h1>
+	{% if app.user %}
+		<h1>
+			Bienvenue
+			{{ app.user.pseudo}}, chez Elle et An formation !
+		</h1>
+	{% else %}
+		<h1>Bienvenue chez Elle et An formation !</h1>
+		<br>
+
+		<h2>
+			N'hésitez pas à vous
+			<a href="{{ path('app_login')}}">connecter</a>
+			ou à vous
+			<a href="{{ path('app_register')}}">enregristrer</a>
+		</h2>
+
+	{% endif %}
 
 	<h2>Voici nos formations, cliquer sur celle qui vous intéresse pour connaitre les prochaines sessions</h2>
 
-	
 
 	{% for formation in formations %}
 		<div class="d-grid gap-3">
 			<div class="p-2 bg-light border">
 				<a class="lienCategorie" href="{{ path('show_formation', {'id': formation.id}) }}">{{formation}}</a>
-				<a class="lienCategorie" href="{{ path('update_formation', {'id' : formation.id}) }}"><i class="fa-solid fa-pen-to-square"></i></a>
-                <a  href="{{ path('delete_formation', {'id' : formation.id}) }}"><i class="fa-solid fa-trash"></i></a>
+				{% if is_granted('ROLE_ADMIN') %}
+					<a class="lienCategorie" href="{{ path('update_formation', {'id' : formation.id}) }}">
+						<i class="fa-solid fa-pen-to-square"></i>
+					</a>
+					<a href="{{ path('delete_formation', {'id' : formation.id}) }}">
+						<i class="fa-solid fa-trash"></i>
+					</a>
+					{% else %}
+				{% endif %}
 			</div>
 		</div>
 		<br>

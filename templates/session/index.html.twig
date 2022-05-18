@@ -6,17 +6,25 @@
 {% block body %}
 
 	<h2>Voici nos sessions actuelles</h2>
-
-	<a href="{{ path('add_session') }}"><button class="button">Ajouter une session</button></a>
+	{% if is_granted('ROLE_ADMIN') %}
+		<a href="{{ path('add_session') }}">
+			<button class="button">Ajouter une session</button>
+		</a>
+		{% else %}
+	{% endif %}
 	<br>
 	{% for session in sessions %}
 		<div class="d-grid gap-3">
 			<div class="p-2 bg-light border">
 				<a href="{{ path('show_session', {'id': session.id})}}">{{session}}</a><br>
-				<a class="lienCategorie" href="{{ path('update_session', {'id' : session.id}) }}"><i class="fa-solid fa-pen-to-square"></i></a>
+				{% if is_granted('ROLE_ADMIN') %}
+					<a class="lienCategorie" href="{{ path('update_session', {'id' : session.id}) }}">
+						<i class="fa-solid fa-pen-to-square"></i>
+					</a>
+					{% else %}
+				{% endif %}
 			</div>
 		</div>
-        <br>
+		<br>
 	{% endfor %}
-
 {% endblock %}

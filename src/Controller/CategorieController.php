@@ -8,6 +8,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CategorieController extends AbstractController
@@ -27,6 +28,7 @@ class CategorieController extends AbstractController
      /**
      * @Route("/categorie/add", name="add_categorie")
      * @Route("/categorie/update/{id}", name="update_categorie")
+     * 
      */
     public function add(ManagerRegistry $doctrine, Categorie $categorie = null, Request $request): Response
     {
@@ -80,7 +82,4 @@ class CategorieController extends AbstractController
             'categorie' => $categorie,
         ]);
     }
-
-     
-    
 }

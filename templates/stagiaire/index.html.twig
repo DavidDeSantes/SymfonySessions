@@ -5,18 +5,30 @@
 
 {% block body %}
 
-	<h2>Voici nos Stagiaires</h2>
+<h2>Voici nos Stagiaires</h2>
+{% if is_granted('ROLE_ADMIN') %}
+	<a href="{{ path('add_stagiaire') }}">
+		<button class="button">Ajouter un stagiaire</button>
+	</a>
+	{% else %}
+{% endif %}
 
-<a href="{{ path('add_stagiaire') }}"><button class="button">Ajouter un stagiaire</button></a>
 
-	{% for stagiaire in stagiaires %}
-		<div class="d-grid gap-3">
-			<div class="p-2 bg-light border">
-				<a class="lienCategorie" href="{{ path('show_stagiaire', {'id': stagiaire.id})}}">{{stagiaire}}</a><br>
-				<a class="lienCategorie" href="{{ path('update_stagiaire', {'id' : stagiaire.id}) }}"><i class="fa-solid fa-pen-to-square"></i></a>
-                <a  href="{{ path('delete_stagiaire', {'id' : stagiaire.id}) }}"><i class="fa-solid fa-trash"></i></i></a>
-			</div>
-		</div>
-		<br>
-	{% endfor %}
-{% endblock %}
+{% for stagiaire in stagiaires %}
+	<div class="d-grid gap-3">
+		<div class="p-2 bg-light border">
+			<a class="lienCategorie" href="{{ path('show_stagiaire', {'id': stagiaire.id})}}">{{stagiaire}}</a><br>
+			{% if is_granted('ROLE_ADMIN') %}
+				<a class="lienCategorie" href="{{ path('update_stagiaire', {'id' : stagiaire.id}) }}">
+					<i class="fa-solid fa-pen-to-square"></i>
+				</a>
+				<a href="{{ path('delete_stagiaire', {'id' : stagiaire.id}) }}">
+					<i class="fa-solid fa-trash"></i>
+				</i>
+			</a>
+			{% else %}
+		{% endif %}
+
+	</div>
+</div>
+<br>{% endfor %}{% endblock %}

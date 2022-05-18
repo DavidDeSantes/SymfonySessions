@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-Programme
+	Programme
 {% endblock %}
 
 {% block body %}
 
-<h4>Programme :</h4>
-<br>
+	<h4>Programme :</h4>
+	<br>
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -23,14 +23,33 @@ Programme
 				<tr>
 					<td>{{moduler.cours}}</td>
 					<td>{{moduler.session}}</td>
-					<td>{{moduler.nbJoursCours}} Jours</td>
-					<td><a href="{{ path('update_moduler', {'id' : moduler.id}) }}"><i class="fa-solid fa-pen-to-square"></i></a></td>
-					<td><a  href="{{ path('delete_moduler', {'id' : moduler.id}) }}"><i class="fa-solid fa-trash"></i></a></td>
+					<td>{{moduler.nbJoursCours}}Jours</td>
+					{% if is_granted('ROLE_ADMIN') %}
+						<td>
+							<a href="{{ path('update_moduler', {'id' : moduler.id}) }}">
+								<i class="fa-solid fa-pen-to-square"></i>
+							</a>
+						</td>
+						<td>
+							<a href="{{ path('delete_moduler', {'id' : moduler.id}) }}">
+								<i class="fa-solid fa-trash"></i>
+							</a>
+						</td>
+						{% else %}
+						<td style="color: red; font-weight : bold;">Admin only !</td>
+						<td style="color: red; font-weight : bold;">Admin only !</td>
+					{% endif %}
+
 				</tr>
 			{% endfor %}
 		</tbody>
 	</table>
-<br>	
-<a href="{{ path('add_moduler') }}"><button class="button">Ajouter d'un programme </button></a>
-
+	<br>
+	{% if is_granted('ROLE_ADMIN') %}
+		<a href="{{ path('add_moduler') }}">
+			<button class="button">Ajouter d'un programme
+			</button>
+		</a>
+		{% else %}
+	{% endif %}
 {% endblock %}

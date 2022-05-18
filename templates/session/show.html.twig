@@ -65,7 +65,7 @@
 			{% else %}
 				{% for stagiaire in stagiaires %}
 					<ul>
-						<li>{{stagiaire}} <a href="{{ path('inscrire', {'idStagiaire': stagiaire.id, 'idSession': session.id }) }}">inscrire à la session</a></li>
+						<li>{{stagiaire}}</li><a href="{{ path('inscrire', {'idStagiaire': stagiaire.id, 'idSession': session.id }) }}">inscrire à la session</a></li>
 					</ul>
 				{% endfor %}
 			{% endif %}

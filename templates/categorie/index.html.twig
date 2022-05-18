@@ -1,22 +1,38 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-liste catégories
+	liste catégories
 {% endblock %}
 
 {% block body %}
 
-	<h1>liste des catégories de nos cours</h1>
+<h1>liste des catégories de nos cours</h1>
 
-    <a href="{{ path('add_categorie') }}"><button class="button">Ajouter une catégorie</button></a>
-	{% for categorie in categories %}
-		<div class="d-grid gap-3">
-			<div class="p-2 bg-light border divCatagorie">
-				<a class="lienCategorie" href="{{ path('show_categorie', {'id': categorie.id}) }}">{{categorie}}</a>
-                <a class="lienCategorie" href="{{ path('update_categorie', {'id' : categorie.id}) }}"><i class="fa-solid fa-pen-to-square"></i></a>
-                <a  href="{{ path('delete_categorie', {'id' : categorie.id}) }}"><i class="fa-solid fa-trash"></i></i></a>
-			</div>
-		</div>
-		<br>
-	{% endfor %}
-{% endblock %}
+{% if is_granted('ROLE_ADMIN') %}
+	<a href="{{ path('add_categorie') }}">
+		<button class="button">Ajouter une catégorie</button>
+	</a>
+	{% else %}
+{% endif %}
+
+
+{% for categorie in categories %}
+	<div class="d-grid gap-3">
+		<div class="p-2 bg-light border divCatagorie">
+			<a class="lienCategorie" href="{{ path('show_categorie', {'id': categorie.id}) }}">{{categorie}}</a>
+			{% if is_granted('ROLE_ADMIN') %}
+				<a class="lienCategorie" href="{{ path('update_categorie', {'id' : categorie.id}) }}">
+					<i class="fa-solid fa-pen-to-square"></i>
+				</a>
+				<a href="{{ path('delete_categorie', {'id' : categorie.id}) }}">
+					<i class="fa-solid fa-trash"></i>
+				</i>
+			</a>
+			{% else %}
+		{% endif %}
+
+	</div>
+</div><br>
+{% endfor %}{% endblock %}
+
+
