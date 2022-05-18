@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `doctrine_migration_versions` (
   PRIMARY KEY (`version`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Listage des données de la table symfonysession.doctrine_migration_versions : ~0 rows (environ)
+-- Listage des données de la table symfonysession.doctrine_migration_versions : ~1 rows (environ)
 /*!40000 ALTER TABLE `doctrine_migration_versions` DISABLE KEYS */;
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
 	('DoctrineMigrations\\Version20220506135047', '2022-05-06 13:50:59', 331);
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `moduler` (
   CONSTRAINT `FK_59B073417ECF78B0` FOREIGN KEY (`cours_id`) REFERENCES `cours` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table symfonysession.moduler : ~16 rows (environ)
+-- Listage des données de la table symfonysession.moduler : ~15 rows (environ)
 /*!40000 ALTER TABLE `moduler` DISABLE KEYS */;
 INSERT INTO `moduler` (`id`, `cours_id`, `session_id`, `nb_jours_cours`) VALUES
 	(2, 1, 1, 30),
@@ -133,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `session` (
   CONSTRAINT `FK_D044D5D45200282E` FOREIGN KEY (`formation_id`) REFERENCES `formation` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table symfonysession.session : ~3 rows (environ)
+-- Listage des données de la table symfonysession.session : ~4 rows (environ)
 /*!40000 ALTER TABLE `session` DISABLE KEYS */;
 INSERT INTO `session` (`id`, `formation_id`, `nom_session`, `place`, `date_debut`, `date_fin`) VALUES
 	(1, 1, 'Développeur Web 1', 4, '2023-05-14', '2024-01-05'),
@@ -200,13 +200,13 @@ CREATE TABLE IF NOT EXISTS `user` (
   `is_verified` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_8D93D649E7927C74` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table symfonysession.user : ~2 rows (environ)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`id`, `email`, `roles`, `password`, `pseudo`, `is_verified`) VALUES
-	(3, 'johan@gmail.com', '[]', '$2y$13$xR5StCONf6mf8L1.DfpEgOs70JZ8bU.t2jw7KZKzu6JEuMUek/A0y', 'Jojo', 1),
-	(4, 'admin1@exemple.com', '[]', '$2y$13$4e3HTYgLg.p343K4HeZoXelypDMaJmMuW8GoFJcdQT8EockV6m.qG', 'Admin', 0);
+	(5, 'admin@exemple.com', '["ROLE_ADMIN"]', '$2y$13$0PqXzTqK5ZBbt4HeozJz0e2YjN6Gz3dmurP46gk/Jg1Fh8MUXXEcS', 'admin', 0),
+	(7, 'user@exemple.com', '["ROLE_USER"]', '$2y$13$5Z3o2iNpLElZlVX4ickQ6.TRy2Q7LalA0b8MeLwB/l3G.WGsWk4ji', 'user', 0);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
