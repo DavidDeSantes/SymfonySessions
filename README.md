@@ -7,7 +7,7 @@ Dans ma formation "Développeur web et web mobile" ce projet Symfony est un site
 - Modification sur tout et suppression sur presque tout sauf ce qui engage une suppression en cascade. 
 - Connexion/inscription avec email associer à MailHOG et un MDP hasher. 
 - Mise en place des rôles Admin/User (User: Il ne peut que majoritairement voir les listings, 
-Admin : À bien évidemment accès à tous les ajouts, modification, suppression 
+Admin : À bien évidemment accès à tout les ajouts, modifications, suppressions
 
 !!! Pour tester les rôles, connectez-vous !!! 
 User: 
