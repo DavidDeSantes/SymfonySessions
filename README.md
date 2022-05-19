@@ -1,5 +1,4 @@
 # SymfonySessions
-Projet Symfony dans le cadre d'un site de formation
 
 Dans ma formation "Développeur web et web mobile" ce projet Symfony est un site de formation :
 - listing formation, catégories des cours, cours, stagiaires, sessions de formations, programmes
